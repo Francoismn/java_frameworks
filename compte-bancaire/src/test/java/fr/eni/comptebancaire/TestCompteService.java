@@ -2,6 +2,7 @@ package fr.eni.comptebancaire;
 
 import fr.eni.comptebancaire.bll.CompteService;
 import fr.eni.comptebancaire.bo.Compte;
+import fr.eni.comptebancaire.bo.ComptePK;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,30 @@ public class TestCompteService {
 
     @Autowired
     private CompteService compteService;
+
+    @Test
+    public void testGetCompteById() {
+        Compte compteLucas = Compte.builder()
+                .numCompte("FR87654321")
+                .pseudo("Lucas")
+                .build();
+
+        compteService.ajouterCompte(compteLucas);
+
+        ComptePK id = ComptePK.builder()
+                .numCompte("FR87654321")
+                .pseudo("Lucas")
+                .build();
+
+        Optional<Compte> compteBddOpt = compteService.getCompteById(id);
+        Assertions.assertThat(compteBddOpt).isPresent();
+        System.out.println(compteBddOpt.get());
+
+
+    }
+
+
+
 
     @Test
     public void testSaveCompte() {

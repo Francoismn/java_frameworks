@@ -1,6 +1,7 @@
 package fr.eni.comptebancaire.bll;
 
 import fr.eni.comptebancaire.bo.Compte;
+import fr.eni.comptebancaire.bo.ComptePK;
 import fr.eni.comptebancaire.dal.CompteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,11 @@ public class CompteServiceImpl implements CompteService{
 
     @Autowired
     private CompteRepository compteRepository;
+
+    @Override
+    public Optional<Compte> getCompteById(ComptePK id) {
+        return compteRepository.findById(id);
+    }
 
     @Override
     public void ajouterCompte(Compte compte) {
