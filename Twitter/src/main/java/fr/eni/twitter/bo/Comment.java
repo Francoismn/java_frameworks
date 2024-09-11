@@ -1,10 +1,7 @@
 package fr.eni.twitter.bo;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -21,5 +18,11 @@ public class Comment {
     private Integer id;
     private String content;
     private LocalDateTime createdAt;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @ManyToOne()
+    @JoinColumn(name = "tweet_id")
+    private Tweet tweet;
 
 }

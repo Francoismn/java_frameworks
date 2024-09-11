@@ -24,8 +24,7 @@ public class Tweet {
     private String content;
     private LocalDateTime createdAt;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JoinColumn(name = "tweet_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "tweet")
     private List<Comment> comments = new ArrayList<>();
 
     public void addComment(Comment comment) {
