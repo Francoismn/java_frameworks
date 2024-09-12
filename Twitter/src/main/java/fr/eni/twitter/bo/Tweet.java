@@ -21,11 +21,27 @@ public class Tweet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String content;
+
     private LocalDateTime createdAt;
 
+    @Builder.Default
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "tweet")
     private List<Comment> comments = new ArrayList<>();
+
+    @Builder.Default
+    @ManyToMany
+    @JoinTable(
+            name = "tweets_hashtags",
+            joinColumns = {
+                    @JoinColumn(name = "tweets_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "hashtags_id")
+            }
+    )
+    private List<HashTag> hashTags = new ArrayList<>();
 
     public void addComment(Comment comment) {
         comments.add(comment);
