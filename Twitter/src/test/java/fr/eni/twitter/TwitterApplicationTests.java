@@ -44,7 +44,7 @@ class TwitterApplicationTests {
         System.out.println(userBdd.getProfile());
     }
 
-    //SQL
+    //JPQL
     @Test
     public void testSearchUserByUsername() {
         //Arrange
