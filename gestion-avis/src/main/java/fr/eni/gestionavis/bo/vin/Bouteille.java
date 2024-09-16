@@ -1,4 +1,4 @@
-package fr.eni.gestionavis.bo;
+package fr.eni.gestionavis.bo.vin;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,22 +8,20 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(collection = "Avis")
-public class Avis {
+@Document(collection = "bottles")
+public class Bouteille implements Serializable {
 
     @Id
-    private String id;
-    @Field("note")
-    private int note;
-    @Field("commentary")
-    private String commentary;
-    @Field("date")
-    private LocalDate date;
+    private BouteilleId id;
+
+    @Field("name")
+    private String nom;
+
 
 }
