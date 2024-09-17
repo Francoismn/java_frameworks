@@ -60,4 +60,6 @@ public class TestAvis {
 
         avisList.forEach(System.out::println);
     }
+
+
 }

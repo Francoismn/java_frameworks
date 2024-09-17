@@ -9,6 +9,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -48,9 +49,30 @@ public class TestRequetesAvis {
         avisList.forEach(System.out::println);
     }
 
+    @Test
+    void findAvisByClientPseudo() {
+        List<Avis> avisList = avisRepository.findByClientPseudo("bobeponge@email.fr");
+        System.out.println("Le nombre d'avis pour le client bobeponge@email.fr est de : " + avisList.size());
+        Assertions.assertThat(avisList).hasSize(3);
+        avisList.forEach(System.out::println);
+    }
 
+    @Test
+    void findAvisByClientQuantiteCommandeeGreaterThan() {
+        List<Avis> avisList = avisRepository.findByClientQuantiteCommandeeGreaterThan(100);
+        System.out.println("Le nombre d'avis avec une quantité commandée > 100 est de : " + avisList.size());
+        Assertions.assertThat(avisList).hasSize(4);
+        avisList.forEach(System.out::println);
+    }
 
-
-
+    @Test
+    void findAvisByDateBetween() {
+        LocalDateTime startDate = LocalDateTime.of(2023, 7, 13, 10, 28);
+        LocalDateTime endDate = LocalDateTime.of(2023, 7, 31, 13, 28);
+        List<Avis> avisList = avisRepository.findByDateBetween(startDate, endDate);
+        System.out.println("Le nombre d'avis entre " + startDate + " et " + endDate + " est de : " + avisList.size());
+        Assertions.assertThat(avisList).hasSize(6);
+        avisList.forEach(System.out::println);
+    }
 
 }
