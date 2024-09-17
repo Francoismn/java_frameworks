@@ -12,6 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor @NoArgsConstructor
 @Builder
 public class BouteilleId implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Field(name = "bottle_id")
