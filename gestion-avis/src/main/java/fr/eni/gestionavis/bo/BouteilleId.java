@@ -1,4 +1,4 @@
-package fr.eni.gestionavis.bo.vin;
+package fr.eni.gestionavis.bo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,18 +9,17 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.io.Serializable;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor
 @Builder
 public class BouteilleId implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    @Field("bottle_id")
+    @Field(name = "bottle_id")
     private int idBouteille;
 
-    @Field("region_id")
+    @Field(name = "region_id")
     private int idRegion;
 
-    @Field("color_id")
+    @Field(name = "color_id")
     private int idCouleur;
-
 }
