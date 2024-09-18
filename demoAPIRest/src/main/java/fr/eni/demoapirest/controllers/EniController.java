@@ -2,6 +2,7 @@ package fr.eni.demoapirest.controllers;
 
 import fr.eni.demoapirest.entities.Crayon;
 import fr.eni.demoapirest.services.EniService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +25,12 @@ public class EniController {
     }
 
     @GetMapping(path = "/crayons")
-    public List<Crayon> getCrayons() {
-        return eniService.listeCrayons();
+    public ResponseEntity<?> getCrayons() {
+        List<Crayon> resultats = eniService.listerCrayons();
+        if (resultats == null || resultats.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(resultats);
     }
 }
 

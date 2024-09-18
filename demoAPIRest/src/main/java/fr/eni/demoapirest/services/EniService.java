@@ -2,7 +2,7 @@ package fr.eni.demoapirest.services;
 
 import fr.eni.demoapirest.entities.Crayon;
 
-import java.lang.reflect.Array;
+
 import java.util.Arrays;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -16,8 +16,7 @@ public class EniService {
             Crayon.builder().id(3).couleur("Bleu").type("Stabilo").build()
     );
 
-    public List<Crayon> listeCrayons() {
-
-        return List.of();
+    public List<Crayon> listerCrayons() {
+        return crayonsBouchonnes;
     };
 }
