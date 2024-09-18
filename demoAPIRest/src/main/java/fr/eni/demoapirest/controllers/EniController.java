@@ -32,9 +32,9 @@ public class EniController {
     }
 
     @GetMapping(path = "/crayons/{id}")
-    public ResponseEntity<?> getCrayonsById(@PathVariable int id) {
+    public ResponseEntity<?> getCrayonsById(@PathVariable String id) {
         try {
-            Crayon crayon = eniService.getCrayonsById(id);
+            Crayon crayon = eniService.getCrayonsById(Integer.parseInt(id));
             return ResponseEntity.ok(crayon);
         } catch (Exception e) {
             return ResponseEntity.noContent().build();
