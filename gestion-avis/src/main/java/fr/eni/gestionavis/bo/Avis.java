@@ -34,7 +34,6 @@ public class Avis {
 
     private Client client;
 
-    @DBRef
     @Field(name = "bottle_id")
-    private Bouteille bouteille;
+    private String bouteilleId;
 }
