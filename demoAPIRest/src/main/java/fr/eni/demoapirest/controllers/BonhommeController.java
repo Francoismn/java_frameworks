@@ -2,6 +2,7 @@ package fr.eni.demoapirest.controllers;
 
 import fr.eni.demoapirest.entities.Bonhomme;
 import fr.eni.demoapirest.services.BonhommeService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,7 @@ public class BonhommeController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody Bonhomme bonhomme) {
+    public ResponseEntity<?> create(@Valid @RequestBody Bonhomme bonhomme) {
         try {
             bonhommeService.save(bonhomme);
             return ResponseEntity.status(HttpStatus.CREATED).body(bonhomme);
